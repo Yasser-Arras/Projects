@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fruit Matches 🍓</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>Fruit Matches 🍓</h1>
+
+<div class="top-bar">
+  <div class="controls">
+    <label for="difficulty">Difficulté:</label>
+    <select id="difficulty">
+      <option value="easy">Facile (5x5)</option>
+      <option value="medium">Moyen (6x6)</option>
+      <option value="hard">Difficile (8x8)</option>
+    </select>
+    <button id="restartBtn">Commencer</button>
+  </div>
+  <div class="stats">
+    <span id="timer">Temps: 0s</span>
+    <span id="clicks">Clics: 0</span>
+  </div>
+</div>
+
+<div id="gameBoard" class="game-board"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
