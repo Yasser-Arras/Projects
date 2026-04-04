@@ -16,6 +16,7 @@ let clicks = 0, matches = 0;
 let timer = 0, timerInterval = null;
 let timerStarted = false;
 let globalColor = '';
+let canclick = true;
 
 // --------------------------
 // IMAGE and SOUNDS
@@ -36,6 +37,37 @@ const sounds = {
   match: new Audio('sounds/match.ogg'),
   win: new Audio('sounds/win.ogg')
 };
+// --------------------------
+// HINT SYSTEM
+// --------------------------
+let hintCD = false; // false = hint ready, true = on cooldown
+let hintTimeout = null;
+const hintBtn = document.getElementById('hintBtn');
+
+function showHint() {
+  if (hintCD) return; 
+
+  hintCD = true; 
+  canclick = false; 
+  updateHintBtn();
+  const allCards = document.querySelectorAll('.card');
+
+  allCards.forEach(card => card.classList.add('flipped'));
+
+  setTimeout(() => {
+    allCards.forEach(card => card.classList.remove('flipped'));
+   
+  }, 3000);
+
+  
+  hintTimeout = setTimeout(() => {
+    hintCD = false;
+  }, 60000);
+}
+function updateHintBtn() {
+  hintBtn.style.backgroundColor = hintCD ? 'gray' : 'green';
+  hintBtn.style.cursor = hintCD ? 'not-allowed' : 'pointer';
+}
 // --------------------------
 // UTILITY FUNCTIONS
 // --------------------------
@@ -90,6 +122,10 @@ function playSound(type) {
 // --------------------------
 function initGame() {
   // Reset board and state
+  if (hintTimeout) clearTimeout(hintTimeout);
+  hintCD = false;
+  canclick = true;
+  updateHintBtn();
   gameBoard.innerHTML = '';
   firstCard = null; secondCard = null;
   clicks = 0; matches = 0;
@@ -219,6 +255,6 @@ function checkMatch() {
 // --------------------------
 restartBtn.addEventListener('click', initGame);
 difficultySelect.addEventListener('change', initGame);
-
+hintBtn.addEventListener('click', showHint);
 // Start the first game
 initGame();
