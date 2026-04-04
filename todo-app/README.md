@@ -70,29 +70,9 @@ L'application est accessible sur **http://127.0.0.1:8000**
 
 ---
 
-## 📁 Structure des dossiers
 
-```
-app/              # Backend Laravel
-resources/
-  ├─ views/       # Templates Blade et composants
-  └─ js/          # JavaScript (toggles, édition, AJAX)
-public/           # Assets compilés (CSS/JS)
-```
+## 💡 Extensions possibles...
 
----
-
-## 🔒 Sécurité
-
-- Ne jamais mettre `.env` sur Git
-- Utiliser la protection CSRF dans les formulaires et requêtes AJAX
-- Ne pas inclure la base de données locale dans le dépôt
-
----
-
-## 💡 Extensions possibles
-
-- Gestion des utilisateurs
 - Notifications
 - Tâches récurrentes
 - Filtres avancés
