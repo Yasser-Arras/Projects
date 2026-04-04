@@ -34,7 +34,7 @@ DB_USERNAME=root
 DB_PASSWORD=
 ```
 
-> ⚠️ Ne jamais mettre le fichier `.env` sur Git — il contient des informations sensibles.
+
 
 Ensuite, générer la clé de l'application :
 ```bash
