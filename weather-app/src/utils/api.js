@@ -1,4 +1,4 @@
-export const API_KEY = "1c8c70df3b221ed4d50efaf9e7bfad21";
+export const API_KEY = "key here";
 
 export async function getWeather(city = "Casablanca") {
   const res = await fetch(
